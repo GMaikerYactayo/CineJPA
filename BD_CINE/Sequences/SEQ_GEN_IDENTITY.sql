@@ -1,0 +1,1 @@
+CREATE SEQUENCE cine_jpa.seq_gen_identity;
