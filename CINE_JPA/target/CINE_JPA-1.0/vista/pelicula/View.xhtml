@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PeliculaViewDlg" widgetVar="PeliculaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.ViewPeliculaTitle}">
+            <h:form id="PeliculaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{peliculaController.selected != null}">
+                        <h:outputText value="#{vista.ViewPeliculaLabel_idpel}"/>
+                        <h:outputText value="#{peliculaController.selected.idpel}" title="#{vista.ViewPeliculaTitle_idpel}"/>
+                        <h:outputText value="#{vista.ViewPeliculaLabel_nompel}"/>
+                        <h:outputText value="#{peliculaController.selected.nompel}" title="#{vista.ViewPeliculaTitle_nompel}"/>
+                        <h:outputText value="#{vista.ViewPeliculaLabel_genpel}"/>
+                        <h:outputText value="#{peliculaController.selected.genpel}" title="#{vista.ViewPeliculaTitle_genpel}"/>
+                        <h:outputText value="#{vista.ViewPeliculaLabel_fechestreno}"/>
+                        <h:outputText value="#{peliculaController.selected.fechestreno}" title="#{vista.ViewPeliculaTitle_fechestreno}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{vista.ViewPeliculaLabel_fechtermino}"/>
+                        <h:outputText value="#{peliculaController.selected.fechtermino}" title="#{vista.ViewPeliculaTitle_fechtermino}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                    </p:panelGrid>
+                    <p:commandButton value="#{vista.Close}" onclick="PeliculaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

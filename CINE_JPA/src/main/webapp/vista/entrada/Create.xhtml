@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EntradaCreateDlg" widgetVar="EntradaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{vista.CreateEntradaTitle}">
+            <h:form id="EntradaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{entradaController.selected != null}">
+                        <p:outputLabel value="#{vista.CreateEntradaLabel_tipent}" for="tipent" />
+                        <p:inputText id="tipent" value="#{entradaController.selected.tipent}" title="#{vista.CreateEntradaTitle_tipent}" required="true" requiredMessage="#{vista.CreateEntradaRequiredMessage_tipent}"/>
+                        <p:outputLabel value="#{vista.CreateEntradaLabel_preent}" for="preent" />
+                        <p:inputText id="preent" value="#{entradaController.selected.preent}" title="#{vista.CreateEntradaTitle_preent}" required="true" requiredMessage="#{vista.CreateEntradaRequiredMessage_preent}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{entradaController.create}" value="#{vista.Save}" update="display,:EntradaListForm:datalist,:growl" oncomplete="handleSubmit(args,'EntradaCreateDialog');"/>
+                    <p:commandButton value="#{vista.Cancel}" onclick="EntradaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
